@@ -29,7 +29,7 @@ Loading.... -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 """)
 time.sleep(3)
 os.system(f'cmd /c "cls"')
-print(f'Spotify Theme Applier (STA) | By SimplyAmazing > Beta Release')
+print(f'Spotify Theme Applier (STA) | By SimplyAmazing > v0.2-beta')
 print(f'-------------------------------------------------------------\n')
 try:
     if not os.path.exists(f"C:/Users/{getpass.getuser()}/AppData/Local/Spotify/"):
@@ -61,10 +61,24 @@ try:
     else:
         os.system(f'cmd /c "spicetify config current_theme {theme}"')
         os.system(f'cmd /c "spicetify apply"')
-        print(f'Attempted to apply theme! Check your Spotify!')
+        os.system(f'cmd /c "cls"')
+        print(f'Spotify Theme Applier (STA) | By SimplyAmazing > v0.2-beta')
+        print(f'-------------------------------------------------------------\n')
+        choice = input(f'Your selected theme ({theme}) has been applied! Do you want to close this tool? (Y/N) ')
+        if choice.lower() == "y":
+            exit()
+        elif choice.lower() == "n":
+            print(f'\nThe tool will now reload. Please wait...')
+            time.sleep(2)
+            os.startfile(__file__)
+            sys.exit()
+        else:
+            print(f'\nInvalid choice! Assuming your answer was Y, and closing tool.')
+            time.sleep(2)
+            exit()
 except Exception as e:
     os.system(f'cmd /c "cls"')
-    print(f'Spotify Theme Applier (STA) | By SimplyAmazing > Beta Release')
+    print(f'Spotify Theme Applier (STA) | By SimplyAmazing > v0.2-beta')
     print(f'-------------------------------------------------------------\n')
     print(f'An error occurred that stopped the process from running further.')
     print(f'The error has been printed below, please check the GitHub page for a list of known bugs and fixes: https://github.com/AmAComputerNerd/SpotifyThemeApplier/issues')
